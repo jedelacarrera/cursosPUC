@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cursos App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<!--     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> -->
+    <link rel="stylesheet" href="css/app.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+    <div class="app-page" data-page="calendar">
+      <div class="app-topbar blue">
+        <div class="app-title">Calendar</div>
+        <div class="right app-button" data-target="courses">Cursos</div>
+      </div>
+
+      <div class="app-content">
+
+        <div class="app-section" id="weekCalendar">
+          <table class="zui-table">
+            <thead>
+                <tr>
+                    <th id="semester">2017-2</th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miercoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                    <th>Sabado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="module">
+                    <td>8:30</td><td class="L"></t><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+                <tr class="module">
+                    <td>10:00</td><td class="L"></td><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+                <tr class="module">
+                    <td>11:30</td><td class="L"></td><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+                <tr class="lunch">
+                    <td>13:00</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                </tr>
+                <tr class="module">
+                    <td>14:00</td><td class="L"></td><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+                <tr class="module">
+                    <td>15:30</td><td class="L"></td><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+                <tr class="module">
+                    <td>17:00</td><td class="L"></td><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+                <tr class="module">
+                    <td>18:30</td><td class="L"></td><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+                <tr class="module">
+                    <td>20:00</td><td class="L"></td><td class="M"></td><td class="W"></td><td class="J"></td><td class="V"></td><td class="S"></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+          
+        <div class="app-section">
+          Sigla: <input class="app-input uppercase" id="courseSearch" placeholder="Ej: IIC2613">
+          <div class="app-button green" id="newCourseButton">Agregar curso</div>
+        </div>
+
+        <div class="app-section" id="courseOptions" hidden>
+          <div id="loadingIcon"></div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="app-page" data-page="courses">
+      <div class="app-topbar">
+        <div class="app-button" data-target="calendar">Calendar</div>
+        <!-- <div class="app-title"><span class="app-icon"></span>Cursos</div> -->
+        <div class="right app-button" data-target="events">Eventos</div>
+      </div>
+
+      <div class="app-content">
+        <div class="app-section">
+          <ul class="app-list" id="coursesList">
+          </ul>
+        </div>
+
+        <div class="app-section">
+            <div class="app-button red" id="deleteAllInfo">Eliminar todo</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="app-page" data-page="courseInfo">
+      <div class="app-topbar">
+        <div class="app-button" data-target="courses">Cursos</div>
+        <!-- <div class="app-title"><span class="app-icon"></span>Detalles del curso</div> -->
+        <div class="right app-button" id="newCourseEventButton">Crear evento</div>
+      </div>
+
+      <div class="app-content">
+        <div class="app-section"><p id="courseSigla">Sigla:</p></div>
+        <div class="app-section"><p id="courseSection">Seccion:</p></div>
+        <div class="app-section"><p id="courseName">Nombre:</p></div>
+        <div class="app-section"><p id="courseTeacher">Profesor:</p></div>
+        <div class="app-section">
+          <ul class="app-list" id="courseModules">
+            <label>Horario</label>
+          </ul>
+        </div>
+
+        <div class="app-section">
+          <ul class="app-list" id="courseEventsList">
+            <label>Eventos</label>
+          </ul>
+        </div>
+        <div class="app-section">
+            <div class="app-button red" id="deleteCourse">Eliminar curso</div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="app-page" data-page="events">
+      <div class="app-topbar">
+        <div class="left app-button" data-target="courses">Cursos</div>
+        <!-- <div class="app-title"><span class="app-icon"></span>Eventos</div> -->
+        <div class="right app-button" id="newEventButton">Crear evento</div>
+      </div>
+
+      <div class="app-content">
+        <div class="app-section">
+          <ul class="app-list" id="eventsList">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="eventEdit">
+      <div class="app-topbar">
+        <div class="app-button" id="eventBackButton">Atras</div>
+        <!-- <div class="app-title"><span class="app-icon"></span>Editar evento</div> -->
+        <div class="right app-button" id="saveEventButton">Guardar</div>
+      </div>
+
+      <div class="app-content">
+        <div class="app-section">
+          Curso: <input class="app-input uppercase" id="eventCourse" placeholder="Ej: IIC2613">
+        </div>
+                
+        <div class="app-section">
+          Fecha: <input class="app-input" id="eventDate" placeholder="Ej: 10/11">
+        </div>
+        <div class="app-section">
+          Nombre: <input class="app-input" name="name" placeholder="Ej: I1" id="eventName">
+          Descripcion: <textarea class="app-input" name="description" placeholder="Message" id="eventDescription"></textarea>
+        </div>
+        <div class="app-section">
+            <div class="app-button red" id="deleteEvent">Eliminar evento</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="semester">
+      <div class="app-topbar">
+        <div class="app-button" data-back>Atras</div>
+        <div class="right app-button" id="saveSemesterButton">Guardar</div>
+      </div>
+
+      <div class="app-content">
+        <div class="app-section">
+          Semestre: <input class="app-input" id="semesterInput" placeholder="Ej: 2017-2">
+        </div>
+      </div>
+    </div>
+
+
+    <script src="js/zepto.js"></script>
+    <script src="js/app.min.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/courseinfo.js"></script>
+    <script src="js/eventedit.js"></script>
+    <script src="js/semester.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
